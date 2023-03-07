@@ -1,3 +1,5 @@
+/* Element Styles */
+
 body {
     padding: 1%;
     font-family: "Inter", sans-serif;
@@ -27,10 +29,14 @@ img {
     max-width: 100%;
 }
 
+/* Page Header Styles */
+
 #page-header {
     border-bottom: 5px solid #000000;
     padding-bottom: 2%;
 }
+
+/* Post Styles */
 
 #post-meta {
     margin-top: 3%;
@@ -39,4 +45,41 @@ img {
 #post-meta img {
     width: 100%;
     margin: 2% 0 1% 0;
+}
+
+#post-author > div {
+    display: flex;
+    justify-content: space-around;
+    padding: 2.5% 5%;
+    margin: 5% 0;
+    border: 3px solid #000000;
+}
+
+#post-author > div:last-of-type {
+    margin-bottom: 2.5%;
+}
+
+#post-author > h3 {
+    text-align: center;
+}
+
+.author-content {
+    width: 50%;
+}
+
+.author-content h3 {
+    margin-top: 0;
+}
+
+.author-image {
+    display: flex;
+    justify-content: center;
+    width: 30%;
+}
+
+/* Page Footer Styles */
+
+#page-footer {
+    text-align: center;
+    font-weight: bold;
 }

@@ -49,11 +49,19 @@ const init = async () => {
         const authorBio = prismicH.asHTML(author.author_bio);
         let authorImage = prismicH.asImageWidthSrcSet(author.author_image);
         authorImage = `<img src="${authorImage.src}" srcset="${authorImage.srcset}" alt="${author.author_image.alt}">`;
-        const authorWebsiteLink = prismicH.asLink(author.author_website_link);
+        const authorWebsiteLink = `<a href="${prismicH.asLink(
+            author.author_website_link
+        )}">${prismicH.asLink(author.author_website_link)}</a>`;
         // Template Author Profile
         const authorDiv = document.createElement("div");
-        authorDiv.innerHTML =
-            authorName + authorBio + authorWebsiteLink + authorImage;
+        const authorContent = document.createElement("div");
+        authorContent.setAttribute("class", "author-content");
+        authorContent.innerHTML = authorName + authorBio + authorWebsiteLink;
+        authorDiv.appendChild(authorContent);
+        const authorMedia = document.createElement("div");
+        authorMedia.setAttribute("class", "author-image");
+        authorMedia.innerHTML = authorImage;
+        authorDiv.appendChild(authorMedia);
         authorContainer.appendChild(authorDiv);
     });
 
@@ -63,8 +71,6 @@ const init = async () => {
     postMeta.innerHTML = postTitle + pubDate + image;
     const contentDiv = document.getElementById("post-content");
     contentDiv.innerHTML = postContent + codeSnippet;
-    const body = document.getElementsByTagName("body")[0];
-    body.appendChild(authorContainer);
 };
 
 init();
