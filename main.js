@@ -29,9 +29,13 @@ const init = async () => {
     // Convert JSON to HTML
     const postTitle = prismicH.asHTML(post_title, null, htmlSerializer);
     const postContent = prismicH.asHTML(post_content);
-    pubDate = prismicH.asDate(pubDate).toLocaleDateString("en-GB");
+    pubDate = `<time datetime="${prismicH
+        .asDate(pubDate)
+        .toLocaleDateString("en-US")}">${prismicH
+        .asDate(pubDate)
+        .toLocaleDateString("en-GB")}</time>`;
     const postImage = prismicH.asImageWidthSrcSet(cover_image, {
-        duotone: ["red", "blue"],
+        duotone: ["black", "white"],
     });
 
     // TODO: Why doesn't this work with pre only p? Applying label doesn't stick when saved.
