@@ -55,6 +55,10 @@ img {
     border: 3px solid #000000;
 }
 
+#post-author > div:first-of-type {
+    margin-top: 2.5%;
+}
+
 #post-author > div:last-of-type {
     margin-bottom: 2.5%;
 }

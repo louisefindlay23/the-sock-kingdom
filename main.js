@@ -51,7 +51,7 @@ const init = async () => {
         authorImage = `<img src="${authorImage.src}" srcset="${authorImage.srcset}" alt="${author.author_image.alt}">`;
         const authorWebsiteLink = `<a href="${prismicH.asLink(
             author.author_website_link
-        )}">${prismicH.asLink(author.author_website_link)}</a>`;
+        )}">${prismicH.asText(author.author_website_text)}</a>`;
         // Template Author Profile
         const authorDiv = document.createElement("div");
         const authorContent = document.createElement("div");
