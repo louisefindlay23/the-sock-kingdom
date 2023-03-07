@@ -18,12 +18,11 @@ const init = async () => {
         code_snippet,
     } = prismicDoc.data;
     let pubDate = prismicDoc.first_publication_date;
-    const group = prismicDoc;
 
     // Use HTML Serializer to render h2s as pig Latin and codespan as code
     const htmlSerializer = {
         heading2: ({ children }) => `<h2>${pigLatin(children)}</h2>`,
-        label: ({ children, key, type, node, text }) =>
+        label: ({ children, node }) =>
             `<code class="${node.data.label}">${children}</code>`,
     };
 
@@ -39,7 +38,7 @@ const init = async () => {
     const codeSnippet = prismicH.asHTML(code_snippet, null, htmlSerializer);
 
     // Loop over Author Profile group
-    const authorContainer = document.createElement("div");
+    const authorContainer = document.getElementById("post-author");
     author_profile.forEach((author) => {
         // Render Author Profile fields
         const authorName = prismicH.asHTML(author.author_name);
@@ -55,12 +54,13 @@ const init = async () => {
     });
 
     // Template Prismic data
-    const container = document.getElementById("container");
     const image = `<img src="${postImage.src}" srcset="${postImage.srcset}" alt="${cover_image.alt}">`;
-    container.innerHTML =
-        postTitle + pubDate + image + postContent + codeSnippet;
-    authorContainer.setAttribute("id", "authorContainer");
-    container.appendChild(authorContainer);
+    const postMeta = document.getElementById("post-meta");
+    postMeta.innerHTML = postTitle + pubDate + image;
+    const contentDiv = document.getElementById("post-content");
+    contentDiv.innerHTML = postContent + codeSnippet;
+    const body = document.getElementsByTagName("body")[0];
+    body.appendChild(authorContainer);
 };
 
 init();
