@@ -1,10 +1,6 @@
-// Import Prismic modules
 import * as prismic from "https://cdn.skypack.dev/@prismicio/client";
 import * as prismicH from "https://cdn.skypack.dev/@prismicio/helpers";
-
-import("./pigLatin.js").then((module) => {
-    module.translate("Hello");
-});
+import { pigLatin } from "./pigLatin.js";
 
 // Connect to Prismic repository
 const repoName = "onboarding-content-management";
@@ -26,7 +22,7 @@ const init = async () => {
 
     // Use HTML Serializer to render h2s as pig Latin and codespan as code
     const htmlSerializer = {
-        heading2: ({ children }) => `<strong>${children}</strong>`,
+        heading2: ({ children }) => `<h2>${pigLatin(children)}</h2>`,
         label: ({ children, key, type, node, text }) =>
             `<code class="${node.data.label}">${children}</code>`,
     };
