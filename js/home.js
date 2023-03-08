@@ -8,37 +8,35 @@ const init = async () => {
     overview_text = prismicH.asHTML(overview_text);
     document.getElementById("page-content").innerHTML = overview_text;
 
-    // Get articles from Prismic
-    const articles = await client.getAllByType("posts");
+    // Get posts from Prismic
+    const posts = await client.getAllByType("posts");
 
-    articles.forEach((article) => {
-        // Render Article fields
-        const articleName = `<a href="${article.url}.html">${prismicH.asHTML(
-            article.data.post_title
+    posts.forEach((post) => {
+        // Format post fields
+        const postName = `<a href="${post.url}.html">${prismicH.asHTML(
+            post.data.post_title
         )}</a>`;
-        const articleDate = `<time datetime="${prismicH
-            .asDate(article.first_publication_date)
+        const postDate = `<time datetime="${prismicH
+            .asDate(post.first_publication_date)
             .toLocaleDateString("en-US")}">${prismicH
-            .asDate(article.first_publication_date)
+            .asDate(post.first_publication_date)
             .toLocaleDateString("en-GB")}</time>`;
-        const articleExcerpt = `<p>${article.data.post_content[0].text}</p>`;
-        let articleImage = prismicH.asImageWidthSrcSet(
-            article.data.cover_image
-        );
-        articleImage = `<img src="${articleImage.src}" srcset="${articleImage.srcset}" alt="${article.data.cover_image.alt}">`;
+        const postExcerpt = `<p>${post.data.post_content[0].text}</p>`;
+        let postImage = prismicH.asImageWidthSrcSet(post.data.cover_image);
+        postImage = `<img src="${postImage.src}" srcset="${postImage.srcset}" alt="${post.data.cover_image.alt}">`;
 
-        // Template Articles
-        const articleContainer = document.getElementById("box-container");
-        const articleDiv = document.createElement("article");
-        const articleContent = document.createElement("div");
-        articleContent.setAttribute("class", "box-content");
-        articleContent.innerHTML = articleName + articleDate + articleExcerpt;
-        articleDiv.appendChild(articleContent);
-        const articleMedia = document.createElement("div");
-        articleMedia.setAttribute("class", "box-image");
-        articleMedia.innerHTML = articleImage;
-        articleDiv.appendChild(articleMedia);
-        articleContainer.appendChild(articleDiv);
+        // Append post section to the DOM
+        const postContainer = document.getElementById("box-container");
+        const postDiv = document.createElement("article");
+        const postContent = document.createElement("div");
+        postContent.setAttribute("class", "box-content");
+        postContent.innerHTML = postName + postDate + postExcerpt;
+        postDiv.appendChild(postContent);
+        const postMedia = document.createElement("div");
+        postMedia.setAttribute("class", "box-image");
+        postMedia.innerHTML = postImage;
+        postDiv.appendChild(postMedia);
+        postContainer.appendChild(postDiv);
     });
 };
 

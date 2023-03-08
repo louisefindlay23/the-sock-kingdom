@@ -3,7 +3,7 @@ import { client } from "./main.js";
 import { pigLatin } from "./pigLatin.js";
 
 const init = async () => {
-    // Get document from Prismic by UID
+    // Get current post document from Prismic by UID
     let uid = window.location.pathname;
     uid = uid.substring(uid.lastIndexOf("/") + 1);
     uid = uid.split(".")[0];
@@ -25,7 +25,7 @@ const init = async () => {
             `<code class="${node.data.label}">${children}</code>`,
     };
 
-    // Convert JSON to HTML
+    // Format post fields
     const postTitle = prismicH.asHTML(post_title, null, htmlSerializer);
     const postContent = prismicH.asHTML(post_content);
     pubDate = `<time datetime="${prismicH
