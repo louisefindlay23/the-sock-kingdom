@@ -14,7 +14,6 @@ h3 {
 
 h1 {
     text-align: center;
-    text-decoration: underline;
 }
 
 li {
@@ -29,25 +28,22 @@ img {
     max-width: 100%;
 }
 
+time {
+    font-weight: 600;
+}
+
 /* Page Header Styles */
 
 #page-header {
     border-bottom: 5px solid #000000;
     padding-bottom: 2%;
+    margin-bottom: 3%;
 }
 
-/* Post Styles */
+/* Content Box Styles */
 
-#post-meta {
-    margin-top: 3%;
-}
-
-#post-meta img {
-    width: 100%;
-    margin: 2% 0 1% 0;
-}
-
-#post-author > div {
+#box-container > div,
+#box-container > article {
     display: flex;
     justify-content: space-around;
     padding: 2.5% 5%;
@@ -55,30 +51,41 @@ img {
     border: 3px solid #000000;
 }
 
-#post-author > div:first-of-type {
+#box-container > div:first-of-type,
+#box-container > article:first-of-type {
     margin-top: 2.5%;
 }
 
-#post-author > div:last-of-type {
+#box-container > div:last-of-type,
+#box-container > article:last-of-type {
     margin-bottom: 2.5%;
 }
 
-#post-author > h3 {
+#box-container > h2,
+#box-container > h3 {
     text-align: center;
+    margin-top: 2.5%;
 }
 
-.author-content {
+.box-content {
     width: 50%;
 }
 
-.author-content h3 {
+.box-content h4 {
     margin-top: 0;
 }
 
-.author-image {
+.box-image {
     display: flex;
     justify-content: center;
     width: 30%;
+}
+
+/* Post Styles */
+
+#post-meta img {
+    width: 100%;
+    margin: 2% 0 1% 0;
 }
 
 /* Page Footer Styles */

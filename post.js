@@ -3,8 +3,11 @@ import { client } from "./main.js";
 import { pigLatin } from "./pigLatin.js";
 
 const init = async () => {
-    // Get first document from Prismic
-    const prismicDoc = await client.getFirst();
+    // Get document from Prismic by UID
+    let uid = window.location.pathname;
+    uid = uid.substring(1);
+    uid = uid.split(".")[0];
+    const prismicDoc = await client.getByUID("posts", uid);
 
     const {
         post_title,
@@ -38,7 +41,7 @@ const init = async () => {
     const codeSnippet = prismicH.asHTML(code_snippet, null, htmlSerializer);
 
     // Loop over Author Profile group
-    const authorContainer = document.getElementById("post-author");
+    const authorContainer = document.getElementById("box-container");
     author_profile.forEach((author) => {
         // Render Author Profile fields
         const authorName = prismicH.asHTML(author.author_name);
@@ -51,11 +54,11 @@ const init = async () => {
         // Template Author Profile
         const authorDiv = document.createElement("div");
         const authorContent = document.createElement("div");
-        authorContent.setAttribute("class", "author-content");
+        authorContent.setAttribute("class", "box-content");
         authorContent.innerHTML = authorName + authorBio + authorWebsiteLink;
         authorDiv.appendChild(authorContent);
         const authorMedia = document.createElement("div");
-        authorMedia.setAttribute("class", "author-image");
+        authorMedia.setAttribute("class", "box-image");
         authorMedia.innerHTML = authorImage;
         authorDiv.appendChild(authorMedia);
         authorContainer.appendChild(authorDiv);
