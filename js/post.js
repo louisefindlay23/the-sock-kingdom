@@ -5,7 +5,7 @@ import { pigLatin } from "./pigLatin.js";
 const init = async () => {
     // Get document from Prismic by UID
     let uid = window.location.pathname;
-    uid = uid.substring(1);
+    uid = uid.substring(uid.lastIndexOf("/") + 1);
     uid = uid.split(".")[0];
     const prismicDoc = await client.getByUID("posts", uid);
 

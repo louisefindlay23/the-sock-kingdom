@@ -1,6 +1,5 @@
 import * as prismicH from "https://cdn.skypack.dev/@prismicio/helpers";
 import { client } from "./main.js";
-import { pigLatin } from "./pigLatin.js";
 
 const init = async () => {
     // Get homepage from Prismic
