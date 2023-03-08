@@ -5,11 +5,16 @@ import { pigLatin } from "./pigLatin.js";
 // Connect to Prismic repository
 const repoName = "onboarding-content-management";
 const endpoint = prismic.getEndpoint(repoName);
-const client = prismic.createClient(endpoint);
+const routes = [
+    { type: "posts", path: "/:uid.html" },
+    { type: "home", path: "/" },
+];
+export const client = prismic.createClient(endpoint, { routes });
 
 const init = async () => {
     // Get first document from Prismic
     const prismicDoc = await client.getFirst();
+
     const {
         post_title,
         post_content,
