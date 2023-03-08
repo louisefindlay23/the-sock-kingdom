@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Preview route</title>
+        <script type="module">
+            import { client } from "../path-to-your-client.js";
+
+            const init = async () => {
+                const defaultURL = "/";
+
+                const url = await client.resolvePreviewURL({
+                    defaultURL,
+                });
+                window.location.replace(url);
+            };
+            init();
+        </script>
+    </head>
+    <body>
+        <h1>Loading Preview...</h1>
+    </body>
+</html>
