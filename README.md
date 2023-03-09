@@ -8,7 +8,7 @@ Develop a basic website using Prismic and vanilla JS that uses singleton and rep
 
 ### About the Website
 
-The Sock Kingdom website contains three blog posts about buying socks which are displayed on the homepage. The HTML serializer was used to render `h2` elements as Pig Latin via the `[piglatin](https://github.com/montanaflynn/piglatin)` module and code snippet field as a `code` element via the codespan custom label.
+The Sock Kingdom website contains three blog posts about buying socks which are displayed on the homepage. The HTML serializer was used to render `h2` elements as Pig Latin via the [`piglatin`](https://github.com/montanaflynn/piglatin) module and code snippet field as a `code` element via the codespan custom label.
 
 The website was deployed to [Netlify](https://thesockkingdom.netlify.app) and then Prismic Preview was integrated for both localhost and production environments.
 
