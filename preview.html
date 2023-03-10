@@ -11,7 +11,14 @@
                 const url = await client.resolvePreviewURL({
                     defaultURL,
                 });
-                window.location.replace(url);
+                if (
+                    window.location.hostname === "127.0.0.1" ||
+                    window.location.hostname === "localhost"
+                ) {
+                    window.location.replace(`${url}.html`);
+                } else {
+                    window.location.replace(url);
+                }
             };
             init();
         </script>
